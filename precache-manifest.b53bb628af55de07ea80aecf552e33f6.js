@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "38f8592d3f8755accbab39ad5bf99dd5",
+    "revision": "5213e98d2c6cbcfae072bf858c353d1e",
     "url": "/NBP-kurs-walut/index.html"
   },
   {
