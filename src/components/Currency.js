@@ -33,7 +33,7 @@ const iconsPath = process.env.PUBLIC_URL + "/icons/";
 
 const Currency = ({ currency, tableType }) => {
   const currencyCodes = [
-    "AU",
+    "AUD",
     "BGN",
     "BRL",
     "CAD",
