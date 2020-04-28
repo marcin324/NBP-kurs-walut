@@ -26,7 +26,7 @@ class App extends Component {
 
   getCurrencyTable = (tableType, calculator = "") => {
     if (calculator === "calculator") {
-      const API = `http://api.nbp.pl/api/exchangerates/tables/a?format=json`;
+      const API = `https://api.nbp.pl/api/exchangerates/tables/a?format=json`;
       fetch(API)
         .then((response) => response.json())
         .then((data) => {
@@ -40,7 +40,7 @@ class App extends Component {
         })
         .catch((error) => console.log(error));
     } else {
-      const API = `http://api.nbp.pl/api/exchangerates/tables/${tableType}?format=json`;
+      const API = `https://api.nbp.pl/api/exchangerates/tables/${tableType}?format=json`;
       fetch(API)
         .then((response) => response.json())
         .then((data) => {
