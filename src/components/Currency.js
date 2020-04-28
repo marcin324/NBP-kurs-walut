@@ -29,6 +29,8 @@ const Icon = styled.img`
   margin-right: 20px;
 `;
 
+const iconsPath = process.env.PUBLIC_URL + "/icons/";
+
 const Currency = ({ currency, tableType }) => {
   const currencyCodes = [
     "AUD",
@@ -72,7 +74,7 @@ const Currency = ({ currency, tableType }) => {
       return (
         <Icon
           key={currencyCode}
-          src={`/icons/${currencyCode}.png`}
+          src={`${iconsPath}${currencyCode}.png`}
           alt={"flag"}
         />
       );
