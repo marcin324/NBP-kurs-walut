@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import CAD from "../icons/CAD.png";
 
 const TableBodyRow = styled.tr`
   background-color: #ffffff;
@@ -29,7 +30,7 @@ const Icon = styled.img`
   margin-right: 20px;
 `;
 
-const iconsPath = process.env.PUBLIC_URL + "/icons/";
+const iconsPath = `${process.env.PUBLIC_URL}/icons/`;
 
 const Currency = ({ currency, tableType }) => {
   const currencyCodes = [
@@ -74,7 +75,8 @@ const Currency = ({ currency, tableType }) => {
       return (
         <Icon
           key={currencyCode}
-          src={`${iconsPath}${currencyCode}.png`}
+          src={CAD}
+          // src={`${iconsPath}${currencyCode}.png`}
           alt={"flag"}
         />
       );
