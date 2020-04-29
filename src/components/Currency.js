@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import CAD from "../icons/CAD.png";
 
 const TableBodyRow = styled.tr`
   background-color: #ffffff;
@@ -75,8 +74,7 @@ const Currency = ({ currency, tableType }) => {
       return (
         <Icon
           key={currencyCode}
-          src={CAD}
-          // src={`${iconsPath}${currencyCode}.png`}
+          src={`${iconsPath}${currencyCode}.png`}
           alt={"flag"}
         />
       );
