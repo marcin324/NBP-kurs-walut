@@ -71,9 +71,11 @@ const Currency = ({ currency, tableType }) => {
   ];
   const image = currencyCodes.map((currencyCode) => {
     if (currencyCode === currency.code) {
+      // const flag = require(`../icons/${currencyCode}.png`);
       return (
         <Icon
           key={currencyCode}
+          // src={flag}
           src={require(`../icons/${currencyCode}.png`)}
           alt={"flag"}
         />
