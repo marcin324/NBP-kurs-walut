@@ -29,8 +29,6 @@ const Icon = styled.img`
   margin-right: 20px;
 `;
 
-// const iconsPath = `${process.env.PUBLIC_URL}/icons/`;
-
 const Currency = ({ currency, tableType }) => {
   const currencyCodes = [
     "AUD",
@@ -71,15 +69,8 @@ const Currency = ({ currency, tableType }) => {
   ];
   const image = currencyCodes.map((currencyCode) => {
     if (currencyCode === currency.code) {
-      // const flag = require(`../icons/${currencyCode}.png`);
-      return (
-        <Icon
-          key={currencyCode}
-          // src={flag}
-          src={require(`../icons/${currencyCode}.png`)}
-          alt={"flag"}
-        />
-      );
+      const flag = require(`../images/${currencyCode}.png`);
+      return <Icon key={currencyCode} src={flag} alt={"flag"} />;
     } else {
       return false;
     }
