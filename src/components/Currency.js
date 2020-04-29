@@ -74,7 +74,7 @@ const Currency = ({ currency, tableType }) => {
       return (
         <Icon
           key={currencyCode}
-          src={`${iconsPath}${currencyCode}.png`}
+          src={require(`../icons/${currencyCode}.png`)}
           alt={"flag"}
         />
       );
