@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0c15f336c68c75b8d9233b05207cab50",
+    "revision": "4bc21ad84957d59a4aaf709c7368d5f8",
     "url": "/NBP-kurs-walut/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/NBP-kurs-walut/static/js/2.f610bf29.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f3515385d9a31ebf06c4",
-    "url": "/NBP-kurs-walut/static/js/main.0c2aa702.chunk.js"
+    "revision": "0d91770bdf4e2c95633a",
+    "url": "/NBP-kurs-walut/static/js/main.39640811.chunk.js"
   },
   {
     "revision": "6b5112a672243e1cafad",
