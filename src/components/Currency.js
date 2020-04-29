@@ -29,7 +29,7 @@ const Icon = styled.img`
   margin-right: 20px;
 `;
 
-const iconsPath = `${process.env.PUBLIC_URL}/icons/`;
+// const iconsPath = `${process.env.PUBLIC_URL}/icons/`;
 
 const Currency = ({ currency, tableType }) => {
   const currencyCodes = [
