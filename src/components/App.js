@@ -30,7 +30,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.getCurrencyTable();
+    this.getCurrencyTable(a, last);
   }
 
   componentDidUpdate(prevProps, prevState) {
