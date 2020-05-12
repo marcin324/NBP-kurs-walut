@@ -16,34 +16,51 @@ const MainContainer = styled.div`
   width: 50vw;
 `;
 
+const a = "a";
+const last = "last";
+const calculator = "calculator";
+
 class App extends Component {
   state = {
     currencies: [],
     tableDate: "",
     tableNumber: "",
     tableType: "",
+    error: null,
   };
 
-  getCurrencyTable = (tableType, calculator = "") => {
-    if (calculator === "calculator") {
-      const API = `https://api.nbp.pl/api/exchangerates/tables/a?format=json`;
-      fetch(API)
-        .then((response) => response.json())
-        .then((data) => {
-          const currenciesObj = data.shift();
-          const { effectiveDate, rates } = currenciesObj;
-          this.setState({
-            currencies: rates,
-            tableDate: effectiveDate,
-            tableType: "calculator",
-          });
-        })
-        .catch((error) => console.log(error));
-    } else {
-      const API = `https://api.nbp.pl/api/exchangerates/tables/${tableType}?format=json`;
-      fetch(API)
-        .then((response) => response.json())
-        .then((data) => {
+  componentDidMount() {
+    this.getCurrencyTable();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.tableType !== calculator && this.state.error) {
+      this.getCurrencyTable(this.state.tableType);
+    }
+    if (this.state.tableType === calculator && this.state.error) {
+      this.getCurrencyCalculator();
+    }
+    if (
+      this.state.tableType !== calculator &&
+      this.state.tableDate !== prevState.tableDate
+    ) {
+      this.getCurrencyTable(this.state.tableType, this.state.tableDate);
+    }
+    if (
+      this.state.tableType === calculator &&
+      this.state.tableDate !== prevState.tableDate
+    ) {
+      this.getCurrencyCalculator(this.state.tableDate);
+    }
+  }
+
+  getCurrencyTable = (tableType = a, tableDate = last) => {
+    fetch(
+      `http://api.nbp.pl/api/exchangerates/tables/${tableType}/${tableDate}/?format=json`
+    )
+      .then((response) => response.json())
+      .then(
+        (data) => {
           const currenciesObj = data.shift();
           const { no, effectiveDate, rates } = currenciesObj;
           this.setState({
@@ -51,10 +68,57 @@ class App extends Component {
             tableDate: effectiveDate,
             tableNumber: no,
             tableType,
+            error: null,
           });
-        })
-        .catch((error) => console.log(error));
-    }
+        },
+        (error) => {
+          this.setState({
+            error,
+          });
+        }
+      )
+      .catch((error) => {
+        if (error.status !== 200) {
+          console.log(error);
+        }
+      });
+  };
+
+  getCurrencyCalculator = (tableDate = last) => {
+    fetch(
+      `http://api.nbp.pl/api/exchangerates/tables/a/${tableDate}?format=json`
+    )
+      .then((response) => response.json())
+      .then(
+        (data) => {
+          const currenciesObj = data.shift();
+          const { no, effectiveDate, rates } = currenciesObj;
+          this.setState({
+            currencies: rates,
+            tableDate: effectiveDate,
+            tableNumber: no,
+            tableType: calculator,
+            error: null,
+          });
+        },
+        (error) => {
+          this.setState({
+            error,
+          });
+        }
+      )
+      .catch((error) => {
+        if (error.status !== 200) {
+          console.log(error);
+        }
+      });
+  };
+
+  handleDate = (e) => {
+    e.preventDefault();
+    this.setState({
+      tableDate: e.target.value,
+    });
   };
 
   render() {
@@ -64,7 +128,12 @@ class App extends Component {
         <GlobalStyle />
         <MainWrapper>
           <MainContainer>
-            <Navigation getCurrencyTable={this.getCurrencyTable} />
+            <Navigation
+              getCurrencyTable={this.getCurrencyTable}
+              getCurrencyCalculator={this.getCurrencyCalculator}
+              handleDate={(e) => this.handleDate(e)}
+              tableDate={tableDate}
+            />
             {tableType && (
               <Header
                 tableDate={tableDate}
@@ -72,10 +141,10 @@ class App extends Component {
                 tableType={tableType}
               />
             )}
-            {tableType !== "calculator" && (
+            {tableType !== calculator && (
               <CurrencyList currencies={currencies} tableType={tableType} />
             )}
-            {tableType === "calculator" && (
+            {tableType === calculator && (
               <Calculator currencies={currencies} tableDate={tableDate} />
             )}
           </MainContainer>
