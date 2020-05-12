@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Span } from "../theme/CommonStyle";
 
 const ResultContainer = styled.div`
   height: 30%;
@@ -9,7 +10,7 @@ const ResultContainer = styled.div`
   align-items: center;
 `;
 
-const ResultBigInfo = styled.div`
+const ResultBigInfo = styled.p`
   font-size: 2.2rem;
   font-weight: 600;
   letter-spacing: 0.5px;
@@ -21,11 +22,7 @@ const ResultBigInfoSpan = styled.span`
   letter-spacing: normal;
 `;
 
-const ResultLittleInfo = styled.div`
-  font-weight: 500;
-  font-size: 1.4rem;
-  color: #696969;
-`;
+const ResultLittleInfoSpan = styled(Span)``;
 
 const Result = ({
   amount,
@@ -45,10 +42,10 @@ const Result = ({
             {result.toFixed(2)}{" "}
             <ResultBigInfoSpan>{convertTo}</ResultBigInfoSpan>
           </ResultBigInfo>
-          <ResultLittleInfo>
+          <ResultLittleInfoSpan>
             1 {convertFrom} = {(1 / (amount / result)).toFixed(4)} {convertTo}{" "}
             według kursu średniego NBP z dnia {tableDate}
-          </ResultLittleInfo>
+          </ResultLittleInfoSpan>
         </>
       )}
       {isDisabled && result && (
@@ -59,10 +56,10 @@ const Result = ({
             {result.toFixed(2)}{" "}
             <ResultBigInfoSpan>{convertTo}</ResultBigInfoSpan>
           </ResultBigInfo>
-          <ResultLittleInfo>
+          <ResultLittleInfoSpan>
             1 {convertFrom} = {(result / amount).toFixed(4)} {convertTo} według
             kursu średniego NBP z dnia {tableDate}
-          </ResultLittleInfo>
+          </ResultLittleInfoSpan>
         </>
       )}
     </ResultContainer>

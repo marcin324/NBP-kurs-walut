@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Span } from "../theme/CommonStyle";
 
 const HeaderContainer = styled.div`
   width: 100%;
@@ -12,10 +13,7 @@ const HeaderTitle = styled.p`
   font-weight: 600;
 `;
 
-const HeaderNumberAndDate = styled.span`
-  font-weight: 500;
-  font-size: 1.4rem;
-  color: #696969;
+const HeaderNumberAndDate = styled(Span)`
   padding: 0 0 0 20px;
 `;
 

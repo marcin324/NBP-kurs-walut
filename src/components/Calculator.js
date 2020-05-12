@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExchangeAlt } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import Result from "./Result";
+import { Input, Button } from "../theme/CommonStyle";
 
 const CalculatorWrapper = styled.div`
   display: flex;
@@ -24,25 +25,14 @@ const CalculatorContainer = styled.div`
 
 const CalculatorLabel = styled.label`
   width: 150px;
-  height: 65px;
+  height: 60px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 `;
 
-const CalculatorInput = styled.input`
-  height: 30px;
-  padding: 0 5px;
-  border: 1px solid #e3e3e3;
-  font-family: "Montserrat", sans-serif;
+const CalculatorInput = styled(Input)`
   font-size: 1.6rem;
-  font-weight: 500;
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    display: none;
-    -webkit-appearance: none;
-    margin: 0;
-  }
 `;
 
 const CalculatorSelect = styled.select`
@@ -57,20 +47,16 @@ const CalculatorSelect = styled.select`
   }
 `;
 
-const CalculatorButton = styled.button`
+const CalculatorButton = styled(Button)`
   width: 70px;
   height: 30px;
   letter-spacing: 0.6px;
   background-color: #005599;
   color: #ffffff;
-  border: none;
   border-radius: 50px;
-  outline: none;
-  transition: all 0.2s ease-in-out;
+  cursor: pointer;
   &:hover {
-    cursor: pointer;
     background-color: #ffffff;
-    color: #005599;
     border: 1px solid #005599;
   }
 `;
@@ -89,9 +75,28 @@ class Calculator extends Component {
     convertTo: "EUR",
     result: "",
     isDisabled: false,
+    currencies: this.props.currencies,
+    tableDate: this.props.tableDate,
   };
 
+  static getDerivedStateFromProps(props, state) {
+    if (props.currencies !== state.currencies) {
+      return {
+        currencies: props.currencies,
+        tableDate: props.tableDate,
+      };
+    }
+    return null;
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.currencies !== prevState.currencies) {
+      this.calculateCurrencies();
+    }
+  }
+
   handleChange = (e, name = "") => {
+    e.preventDefault();
     if (name === "yourAmount") {
       const number = e.target.value;
       if (number > 0 || !number) {
@@ -108,7 +113,7 @@ class Calculator extends Component {
     }
   };
 
-  getChangeCalculator = () => {
+  changeCalculator = () => {
     const { convertFrom, convertTo } = this.state;
     !this.state.isDisabled
       ? this.setState({
@@ -125,9 +130,9 @@ class Calculator extends Component {
         });
   };
 
-  getCalculateCurrencies = () => {
-    const { amount, convertTo, convertFrom } = this.state;
-    this.props.currencies.forEach((currency) => {
+  calculateCurrencies = () => {
+    const { amount, convertTo, convertFrom, currencies } = this.state;
+    currencies.forEach((currency) => {
       if (amount && currency.code === convertTo) {
         this.setState({
           result: amount / currency.mid,
@@ -143,7 +148,14 @@ class Calculator extends Component {
   };
 
   render() {
-    const { amount, convertFrom, convertTo, result, isDisabled } = this.state;
+    const {
+      amount,
+      convertFrom,
+      convertTo,
+      result,
+      isDisabled,
+      tableDate,
+    } = this.state;
     const yourAmount = "yourAmount";
     const rendResult = (
       <Result
@@ -152,7 +164,7 @@ class Calculator extends Component {
         convertTo={convertTo}
         result={result}
         isDisabled={isDisabled}
-        tableDate={this.props.tableDate}
+        tableDate={tableDate}
       />
     );
     return (
@@ -287,7 +299,7 @@ class Calculator extends Component {
               </CalculatorSelect>
             </CalculatorLabel>
 
-            <CalculatorButtonIcon onClick={this.getChangeCalculator}>
+            <CalculatorButtonIcon onClick={this.changeCalculator}>
               <FontAwesomeIcon icon={faExchangeAlt} />
             </CalculatorButtonIcon>
 
@@ -408,7 +420,7 @@ class Calculator extends Component {
                 </option>
               </CalculatorSelect>
             </CalculatorLabel>
-            <CalculatorButton onClick={this.getCalculateCurrencies}>
+            <CalculatorButton onClick={this.calculateCurrencies}>
               Przelicz
             </CalculatorButton>
           </CalculatorContainer>
