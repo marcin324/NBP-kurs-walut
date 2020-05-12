@@ -98,7 +98,7 @@ class Calculator extends Component {
   handleChange = (e, name = "") => {
     e.preventDefault();
     if (name === "yourAmount") {
-      const number = parseInt(e.target.value);
+      const number = e.target.value;
       if (number >= 0) {
         this.setState({
           amount: number,
