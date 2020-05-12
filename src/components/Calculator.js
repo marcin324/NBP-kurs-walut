@@ -99,7 +99,7 @@ class Calculator extends Component {
     e.preventDefault();
     if (name === "yourAmount") {
       const number = e.target.value;
-      if (number > 0 || !number) {
+      if (number >= 0 || !number) {
         this.setState({
           amount: number,
           result: "",
@@ -132,19 +132,25 @@ class Calculator extends Component {
 
   calculateCurrencies = () => {
     const { amount, convertTo, convertFrom, currencies } = this.state;
-    currencies.forEach((currency) => {
-      if (amount && currency.code === convertTo) {
-        this.setState({
-          result: amount / currency.mid,
-        });
-        return true;
-      } else if (amount && currency.code === convertFrom) {
-        this.setState({
-          result: amount * currency.mid,
-        });
-        return true;
-      } else return false;
-    });
+    if (amount > 0) {
+      currencies.forEach((currency) => {
+        if (amount && currency.code === convertTo) {
+          this.setState({
+            result: amount / currency.mid,
+          });
+          return true;
+        } else if (amount && currency.code === convertFrom) {
+          this.setState({
+            result: amount * currency.mid,
+          });
+          return true;
+        } else return false;
+      });
+    } else {
+      this.setState({
+        amount: "",
+      });
+    }
   };
 
   render() {
