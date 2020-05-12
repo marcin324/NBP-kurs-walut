@@ -132,25 +132,19 @@ class Calculator extends Component {
 
   calculateCurrencies = () => {
     const { amount, convertTo, convertFrom, currencies } = this.state;
-    if (amount > 0) {
-      currencies.forEach((currency) => {
-        if (amount && currency.code === convertTo) {
-          this.setState({
-            result: amount / currency.mid,
-          });
-          return true;
-        } else if (amount && currency.code === convertFrom) {
-          this.setState({
-            result: amount * currency.mid,
-          });
-          return true;
-        } else return false;
-      });
-    } else {
-      this.setState({
-        amount: "",
-      });
-    }
+    currencies.forEach((currency) => {
+      if (amount > 0 && currency.code === convertTo) {
+        this.setState({
+          result: amount / currency.mid,
+        });
+        return true;
+      } else if (amount > 0 && currency.code === convertFrom) {
+        this.setState({
+          result: amount * currency.mid,
+        });
+        return true;
+      } else return false;
+    });
   };
 
   render() {
