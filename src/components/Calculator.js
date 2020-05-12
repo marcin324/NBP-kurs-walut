@@ -99,7 +99,7 @@ class Calculator extends Component {
     e.preventDefault();
     if (name === "yourAmount") {
       const number = e.target.value;
-      if (number >= 0 || !number) {
+      if (number >= 0) {
         this.setState({
           amount: number,
           result: "",
