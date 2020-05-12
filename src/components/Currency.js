@@ -24,61 +24,17 @@ export const TableBodyCell = styled.td`
   }
 `;
 
-const Icon = styled.img`
+const Image = styled.img`
   display: block;
   margin-right: 20px;
 `;
 
-const Currency = ({ currency, tableType }) => {
-  const currencyCodes = [
-    "AUD",
-    "BGN",
-    "BRL",
-    "CAD",
-    "CLP",
-    "CNY",
-    "CZK",
-    "DKK",
-    "EUR",
-    "HKD",
-    "THB",
-    "HRK",
-    "HUF",
-    "IDR",
-    "ILS",
-    "INR",
-    "ISK",
-    "JPY",
-    "KRW",
-    "MYR",
-    "MXN",
-    "NOK",
-    "NZD",
-    "PHP",
-    "RON",
-    "RUB",
-    "SEK",
-    "CHF",
-    "GBP",
-    "USD",
-    "SGD",
-    "UAH",
-    "TRY",
-    "ZAR",
-    "XDR",
-  ];
-  const image = currencyCodes.map((currencyCode) => {
-    if (currencyCode === currency.code) {
-      const flag = require(`../images/${currencyCode}.png`);
-      return <Icon key={currencyCode} src={flag} alt={"flag"} />;
-    } else {
-      return false;
-    }
-  });
+const Currency = ({ currency, tableType, currencyCode }) => {
+  const flag = require(`../images/${currencyCode}.png`);
   return (
     <TableBodyRow>
       <TableBodyCell>
-        {image}
+        <Image src={flag} alt={"country flag"} />
         {currency.currency}
       </TableBodyCell>
       <TableBodyCell>{currency.code}</TableBodyCell>

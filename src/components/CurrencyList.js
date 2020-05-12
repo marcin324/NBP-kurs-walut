@@ -21,7 +21,12 @@ const TableHeadCell = styled(TableBodyCell)`
 
 const CurrencyList = ({ currencies, tableType }) => {
   const currencyList = currencies.map((currency) => (
-    <Currency key={currency.code} currency={currency} tableType={tableType} />
+    <Currency
+      key={currency.code}
+      currency={currency}
+      tableType={tableType}
+      currencyCode={currency.code}
+    />
   ));
   return (
     <Table>
