@@ -95,16 +95,35 @@ class Calculator extends Component {
     }
   }
 
-  handleChange = (e, name = "") => {
+  // handleChange = (e, name = "") => {
+  //   e.preventDefault();
+  //   if (name === "yourAmount") {
+  //     const number = e.target.value;
+  //     if (number >= 0) {
+  //       this.setState({
+  //         amount: number,
+  //         result: "",
+  //       });
+  //     }
+  //   } else {
+  //     this.setState({
+  //       [e.target.name]: e.target.value,
+  //       result: "",
+  //     });
+  //   }
+  // };
+
+  handleChange = (e) => {
     e.preventDefault();
-    if (name === "yourAmount") {
-      const number = e.target.value;
-      if (number >= 0) {
-        this.setState({
-          amount: number,
-          result: "",
-        });
-      }
+    const number = e.target.value;
+    console.log(number);
+    if (number >= 0) {
+      this.setState({
+        amount: number,
+        result: "",
+      });
+    } else if (number < 0) {
+      return false;
     } else {
       this.setState({
         [e.target.name]: e.target.value,
@@ -143,7 +162,12 @@ class Calculator extends Component {
           result: amount * currency.mid,
         });
         return true;
-      } else return false;
+      } else if (amount <= 0) {
+        this.setState({
+          amount: "",
+        });
+        return false;
+      }
     });
   };
 
@@ -156,7 +180,6 @@ class Calculator extends Component {
       isDisabled,
       tableDate,
     } = this.state;
-    const yourAmount = "yourAmount";
     const rendResult = (
       <Result
         amount={amount}
@@ -176,7 +199,7 @@ class Calculator extends Component {
               <CalculatorInput
                 name="amount"
                 value={amount}
-                onChange={(e) => this.handleChange(e, yourAmount)}
+                onChange={(e) => this.handleChange(e)}
                 type="number"
               />
             </CalculatorLabel>
