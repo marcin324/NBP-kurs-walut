@@ -95,24 +95,6 @@ class Calculator extends Component {
     }
   }
 
-  // handleChange = (e, name = "") => {
-  //   e.preventDefault();
-  //   if (name === "yourAmount") {
-  //     const number = e.target.value;
-  //     if (number >= 0) {
-  //       this.setState({
-  //         amount: number,
-  //         result: "",
-  //       });
-  //     }
-  //   } else {
-  //     this.setState({
-  //       [e.target.name]: e.target.value,
-  //       result: "",
-  //     });
-  //   }
-  // };
-
   handleChange = (e) => {
     e.preventDefault();
     const number = e.target.value;
