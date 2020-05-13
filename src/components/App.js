@@ -29,10 +29,6 @@ class App extends Component {
     error: null,
   };
 
-  componentDidMount() {
-    this.getCurrencyTable(a, last);
-  }
-
   componentDidUpdate(prevProps, prevState) {
     if (this.state.tableType !== calculator && this.state.error) {
       this.getCurrencyTable(this.state.tableType);
@@ -120,6 +116,10 @@ class App extends Component {
       tableDate: e.target.value,
     });
   };
+
+  componentDidMount() {
+    this.getCurrencyTable();
+  }
 
   render() {
     const { currencies, tableDate, tableNumber, tableType } = this.state;
