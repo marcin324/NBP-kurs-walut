@@ -69,15 +69,18 @@ const CalculatorButtonIcon = styled(CalculatorButton)`
 `;
 
 class Calculator extends Component {
-  state = {
-    amount: 100,
-    convertFrom: "PLN",
-    convertTo: "EUR",
-    result: "",
-    isDisabled: false,
-    currencies: this.props.currencies,
-    tableDate: this.props.tableDate,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      amount: 100,
+      convertFrom: "PLN",
+      convertTo: "EUR",
+      result: "",
+      isDisabled: false,
+      currencies: this.props.currencies,
+      tableDate: this.props.tableDate,
+    };
+  }
 
   static getDerivedStateFromProps(props, state) {
     if (props.currencies !== state.currencies) {
@@ -98,7 +101,6 @@ class Calculator extends Component {
   handleChange = (e) => {
     e.preventDefault();
     const number = e.target.value;
-    console.log(number);
     if (number >= 0) {
       this.setState({
         amount: number,
@@ -153,6 +155,10 @@ class Calculator extends Component {
     });
   };
 
+  componentDidMount() {
+    this.calculateCurrencies();
+  }
+
   render() {
     const {
       amount,
@@ -176,15 +182,22 @@ class Calculator extends Component {
       <>
         <CalculatorWrapper>
           <CalculatorContainer>
-            <CalculatorLabel>
-              Kwota:
-              <CalculatorInput
-                name="amount"
-                value={amount}
-                onChange={(e) => this.handleChange(e)}
-                type="number"
-              />
-            </CalculatorLabel>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                this.calculateCurrencies();
+              }}
+            >
+              <CalculatorLabel htmlFor="number">
+                Kwota:
+                <CalculatorInput
+                  name="amount"
+                  value={amount}
+                  onChange={(e) => this.handleChange(e)}
+                  type="number"
+                />
+              </CalculatorLabel>
+            </form>
 
             <CalculatorLabel>
               Mam:
