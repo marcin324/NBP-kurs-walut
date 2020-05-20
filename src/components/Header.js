@@ -17,7 +17,7 @@ const HeaderNumberAndDate = styled(Span)`
   padding: 0 0 0 20px;
 `;
 
-const Header = ({ tableDate, tableNumber, tableType }) => {
+const Header = ({ tableDate, tableNumber, tableType, endDate }) => {
   return (
     <HeaderContainer>
       {tableType === "calculator" && (
