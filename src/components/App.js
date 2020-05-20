@@ -6,7 +6,7 @@ import Header from "./Header";
 import CurrencyList from "./CurrencyList";
 import Calculator from "./Calculator";
 
-const MainWrapper = styled.div`
+const MainWrapper = styled.main`
   width: 100%;
   margin: 30px 0;
 `;
@@ -16,113 +16,120 @@ const MainContainer = styled.div`
   width: 50vw;
 `;
 
-const a = "a";
-const last = "last";
-const calculator = "calculator";
-
 class App extends Component {
-  state = {
-    currencies: [],
-    tableDate: "",
-    tableNumber: "",
-    tableType: "",
-    error: null,
-  };
+  constructor(props) {
+    super(props);
+    this.a = "a";
+    this.calculator = "calculator";
+    this.currentDate = new Date().toISOString().slice(0, 10);
+    this.getCurrencyTable = this.getCurrencyTable.bind(this);
+    this.getCurrencyCalculator = this.getCurrencyCalculator.bind(this);
+    this.state = {
+      currencies: [],
+      tableDate: "",
+      tableNumber: "",
+      tableType: "",
+      startDate: "",
+      endDate: "",
+      error: null,
+    };
+  }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.state.tableType !== calculator && this.state.error) {
-      this.getCurrencyTable(this.state.tableType);
-    }
-    if (this.state.tableType === calculator && this.state.error) {
-      this.getCurrencyCalculator();
+    if (
+      this.state.tableType !== this.calculator &&
+      this.state.endDate !== prevState.endDate
+    ) {
+      this.getCurrencyTable(this.state.tableType, this.state.endDate);
     }
     if (
-      this.state.tableType !== calculator &&
-      this.state.tableDate !== prevState.tableDate
+      this.state.tableType === this.calculator &&
+      this.state.endDate !== prevState.endDate
     ) {
-      this.getCurrencyTable(this.state.tableType, this.state.tableDate);
-    }
-    if (
-      this.state.tableType === calculator &&
-      this.state.tableDate !== prevState.tableDate
-    ) {
-      this.getCurrencyCalculator(this.state.tableDate);
+      this.getCurrencyCalculator(this.state.endDate);
     }
   }
 
-  getCurrencyTable = (tableType = a, tableDate = last) => {
-    fetch(
-      `http://api.nbp.pl/api/exchangerates/tables/${tableType}/${tableDate}/?format=json`
-    )
-      .then((response) => response.json())
-      .then(
-        (data) => {
-          const currenciesObj = data.shift();
-          const { no, effectiveDate, rates } = currenciesObj;
-          this.setState({
-            currencies: rates,
-            tableDate: effectiveDate,
-            tableNumber: no,
-            tableType,
-            error: null,
-          });
-        },
-        (error) => {
-          this.setState({
-            error,
-          });
-        }
-      )
-      .catch((error) => {
-        if (error.status !== 200) {
-          console.log(error);
-        }
-      });
+  getDate = (date) => {
+    const newDate = new Date(date);
+    newDate.setDate(newDate.getDate() - 5);
+    const startDate = new Date(newDate).toISOString().slice(0, 10);
+    this.setState({
+      startDate,
+    });
   };
 
-  getCurrencyCalculator = (tableDate = last) => {
-    fetch(
-      `http://api.nbp.pl/api/exchangerates/tables/a/${tableDate}?format=json`
-    )
-      .then((response) => response.json())
-      .then(
-        (data) => {
-          const currenciesObj = data.shift();
-          const { no, effectiveDate, rates } = currenciesObj;
-          this.setState({
-            currencies: rates,
-            tableDate: effectiveDate,
-            tableNumber: no,
-            tableType: calculator,
-            error: null,
-          });
-        },
-        (error) => {
-          this.setState({
-            error,
-          });
-        }
-      )
-      .catch((error) => {
-        if (error.status !== 200) {
-          console.log(error);
-        }
+  async getCurrencyTable(tableType, endDate) {
+    await this.getDate(endDate);
+    try {
+      const data = await this.fetchData(
+        `http://api.nbp.pl/api/exchangerates/tables/${tableType}/${this.state.startDate}/${endDate}/?format=json`
+      );
+      const { no, effectiveDate, rates } = data.pop();
+      this.setState({
+        currencies: rates,
+        tableDate: effectiveDate,
+        tableNumber: no,
+        tableType,
+        endDate,
+        error: null,
       });
-  };
+    } catch (error) {
+      console.log(error);
+      this.setState({
+        error,
+      });
+    }
+  }
+
+  async getCurrencyCalculator(endDate) {
+    await this.getDate(endDate);
+    try {
+      const data = await this.fetchData(
+        `http://api.nbp.pl/api/exchangerates/tables/a/${this.state.startDate}/${endDate}?format=json`
+      );
+      const { no, effectiveDate, rates } = data.pop();
+      this.setState({
+        currencies: rates,
+        tableDate: effectiveDate,
+        tableNumber: no,
+        tableType: this.calculator,
+        endDate,
+        error: null,
+      });
+    } catch (error) {
+      this.setState({
+        error,
+      });
+    }
+  }
+
+  async fetchData(url) {
+    const response = await fetch(url);
+    const parsedResponse = await response.json();
+
+    return parsedResponse;
+  }
 
   handleDate = (e) => {
     e.preventDefault();
     this.setState({
-      tableDate: e.target.value,
+      endDate: e.target.value,
     });
   };
 
   componentDidMount() {
-    this.getCurrencyTable();
+    this.getCurrencyTable(this.a, this.currentDate);
   }
 
   render() {
-    const { currencies, tableDate, tableNumber, tableType } = this.state;
+    const {
+      currencies,
+      tableDate,
+      tableNumber,
+      tableType,
+      endDate,
+    } = this.state;
     return (
       <>
         <GlobalStyle />
@@ -133,18 +140,20 @@ class App extends Component {
               getCurrencyCalculator={this.getCurrencyCalculator}
               handleDate={(e) => this.handleDate(e)}
               tableDate={tableDate}
+              endDate={endDate}
             />
             {tableType && (
               <Header
                 tableDate={tableDate}
                 tableNumber={tableNumber}
                 tableType={tableType}
+                endDate={endDate}
               />
             )}
-            {tableType !== calculator && (
+            {tableType !== this.calculator && (
               <CurrencyList currencies={currencies} tableType={tableType} />
             )}
-            {tableType === calculator && (
+            {tableType === this.calculator && (
               <Calculator currencies={currencies} tableDate={tableDate} />
             )}
           </MainContainer>
