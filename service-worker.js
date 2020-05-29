@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/NBP-kurs-walut/precache-manifest.9e1a9b4092ae3681b27b23c4f8a8e0ff.js"
+  "/NBP-kurs-walut/precache-manifest.158bf115736dc6aa0f3454ea63a1537a.js"
 );
 
 self.addEventListener('message', (event) => {
