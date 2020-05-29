@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const TableBodyRow = styled.tr`
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   font-weight: 500;
   transition: all 0.2s ease-in-out;
   :nth-child(even) {

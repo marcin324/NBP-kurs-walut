@@ -24,7 +24,7 @@ const NavigationTitle = styled.p`
 
 const NavigationLabel = styled.label`
   position: relative;
-  flex-basis: 53%;
+  flex-basis: 58%;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -34,11 +34,10 @@ const NavigationDateInfo = styled(Span)``;
 
 const NavigationInfoIcon = styled.div`
   position: absolute;
-  left: 200px;
+  left: 210px;
   top: -2px;
   font-size: 1.3rem;
-
-  color: #aaaaaa; /* #696969; */
+  color: #696969;
   display: inline-block;
   margin-top: -10px;
   padding-top: 10px;
@@ -48,14 +47,14 @@ const NavigationInfoIcon = styled.div`
     animation: hidden ease-in-out 0.2s 1 forwards;
     background: rgba(0, 0, 0, 0.8);
     border-radius: 5px;
-    color: #fff;
+    color: #ffffff;
     content: attr(data-tooltip);
     font-size: 1.2rem;
     opacity: 0;
     padding: 12px;
     position: absolute;
     top: 152px;
-    left: -10px;
+    left: -15px;
     transform: translateY(-100%);
     visibility: hidden;
     width: 400px;
@@ -70,7 +69,7 @@ const NavigationInfoIcon = styled.div`
     border-width: 0px 10px 10px 10px;
     content: "";
     height: 0px;
-    left: 0px;
+    left: -5px;
     opacity: 0;
     position: absolute;
     top: 38px;

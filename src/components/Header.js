@@ -5,7 +5,7 @@ import { Span } from "../theme/CommonStyle";
 const HeaderContainer = styled.div`
   width: 100%;
   padding: 30px 10px;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
 `;
 
 const HeaderTitle = styled.p`
