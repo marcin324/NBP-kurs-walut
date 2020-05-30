@@ -2,21 +2,20 @@ import React from "react";
 import styled from "styled-components";
 
 const TableBodyRow = styled.tr`
-  /* background-color: #ffffff; */
-  font-weight: 500;
+  font-weight: ${(props) => props.theme.bold500};
   transition: all 0.2s ease-in-out;
   :nth-child(even) {
-    background-color: #f1f1f1;
+    background-color: ${(props) => props.theme.colorBackground};
   }
   &:hover {
-    background-color: #ccccff;
+    background-color: ${(props) => props.theme.colorTableHover};
   }
 `;
 
 export const TableBodyCell = styled.td`
   padding: 5px 10px;
   min-width: 120px;
-  border-bottom: 1px solid #e3e3e3;
+  border-bottom: 1px solid ${(props) => props.theme.colorBorder};
   :first-child {
     display: flex;
     justify-content: flex-start;

@@ -5,12 +5,11 @@ import { Span } from "../theme/CommonStyle";
 const HeaderContainer = styled.div`
   width: 100%;
   padding: 30px 10px;
-  /* background-color: #ffffff; */
 `;
 
 const HeaderTitle = styled.p`
-  font-size: 1.9rem;
-  font-weight: 600;
+  font-size: ${(props) => props.theme.fontSize.l};
+  font-weight: ${(props) => props.theme.bold600};
 `;
 
 const HeaderNumberAndDate = styled(Span)`

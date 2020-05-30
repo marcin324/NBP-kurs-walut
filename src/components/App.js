@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
+import { theme } from "../theme/MainTheme";
 import GlobalStyle from "../theme/GlobalStyle";
 import Navigation from "./Navigation";
 import Header from "./Header";
@@ -133,31 +134,33 @@ class App extends Component {
     return (
       <>
         <GlobalStyle />
-        <MainWrapper>
-          <MainContainer>
-            <Navigation
-              getCurrencyTable={this.getCurrencyTable}
-              getCurrencyCalculator={this.getCurrencyCalculator}
-              handleDate={(e) => this.handleDate(e)}
-              tableDate={tableDate}
-              endDate={endDate}
-            />
-            {tableType && (
-              <Header
+        <ThemeProvider theme={theme}>
+          <MainWrapper>
+            <MainContainer>
+              <Navigation
+                getCurrencyTable={this.getCurrencyTable}
+                getCurrencyCalculator={this.getCurrencyCalculator}
+                handleDate={(e) => this.handleDate(e)}
                 tableDate={tableDate}
-                tableNumber={tableNumber}
-                tableType={tableType}
                 endDate={endDate}
               />
-            )}
-            {tableType !== this.calculator && (
-              <CurrencyList currencies={currencies} tableType={tableType} />
-            )}
-            {tableType === this.calculator && (
-              <Calculator currencies={currencies} tableDate={tableDate} />
-            )}
-          </MainContainer>
-        </MainWrapper>
+              {tableType && (
+                <Header
+                  tableDate={tableDate}
+                  tableNumber={tableNumber}
+                  tableType={tableType}
+                  endDate={endDate}
+                />
+              )}
+              {tableType !== this.calculator && (
+                <CurrencyList currencies={currencies} tableType={tableType} />
+              )}
+              {tableType === this.calculator && (
+                <Calculator currencies={currencies} tableDate={tableDate} />
+              )}
+            </MainContainer>
+          </MainWrapper>
+        </ThemeProvider>
       </>
     );
   }

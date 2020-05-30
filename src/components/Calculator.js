@@ -11,7 +11,7 @@ const CalculatorWrapper = styled.div`
   justify-content: space-around;
   align-items: center;
   height: 250px;
-  background-color: #f1f1f1;
+  background-color: ${(props) => props.theme.colorBackground};
 `;
 
 const CalculatorContainer = styled.div`
@@ -32,18 +32,18 @@ const CalculatorLabel = styled.label`
 `;
 
 const CalculatorInput = styled(Input)`
-  font-size: 1.6rem;
+  font-size: ${(props) => props.theme.fontSize.m};
 `;
 
 const CalculatorSelect = styled.select`
   height: 30px;
   padding: 0 5px;
-  border: 1px solid #e3e3e3;
+  border: 1px solid ${(props) => props.theme.colorBorder};
   font-family: "Montserrat", sans-serif;
-  font-size: 1.6rem;
-  font-weight: 500;
+  font-size: ${(props) => props.theme.fontSize.m};
+  font-weight: ${(props) => props.theme.bold500};
   & > option {
-    font-weight: 500;
+    font-weight: ${(props) => props.theme.bold500};
   }
 `;
 
@@ -51,13 +51,13 @@ const CalculatorButton = styled(Button)`
   width: 70px;
   height: 30px;
   letter-spacing: 0.6px;
-  background-color: #005599;
-  color: #ffffff;
+  border: 1px solid ${(props) => props.theme.colorButton};
+  background-color: ${(props) => props.theme.colorButton};
+  color: ${(props) => props.theme.colorWhite};
   border-radius: 50px;
   cursor: pointer;
   &:hover {
-    background-color: #ffffff;
-    border: 1px solid #005599;
+    background-color: ${(props) => props.theme.colorWhite};
   }
 `;
 
@@ -65,7 +65,7 @@ const CalculatorButtonIcon = styled(CalculatorButton)`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.8rem;
+  font-size: ${(props) => props.theme.fontSize.l};
 `;
 
 class Calculator extends Component {

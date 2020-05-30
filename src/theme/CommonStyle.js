@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
 export const Span = styled.span`
-  font-weight: 500;
-  font-size: 1.4rem;
-  color: #696969;
+  font-weight: ${(props) => props.theme.bold500};
+  font-size: ${(props) => props.theme.fontSize.s};
+  color: ${(props) => props.theme.colorSpan};
 `;
 
 export const Input = styled.input`
   height: 30px;
   padding: 0 5px;
-  border: 1px solid #e3e3e3;
+  border: 1px solid ${(props) => props.theme.colorBorder};
   font-family: "Montserrat", sans-serif;
-  font-weight: 500;
+  font-weight: ${(props) => props.theme.bold500};
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
     display: none;
@@ -27,6 +27,6 @@ export const Button = styled.button`
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   &:hover {
-    color: #005599;
+    color: ${(props) => props.theme.colorButton};
   }
 `;

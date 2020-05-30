@@ -7,7 +7,7 @@ import { Span, Input, Button } from "../theme/CommonStyle";
 const NavigationContainer = styled.div`
   width: 100%;
   padding: 0 10px;
-  border-bottom: 1px solid #e3e3e3;
+  border-bottom: 1px solid ${(props) => props.theme.colorBorder};
 `;
 
 const NavigationHeading = styled.div`
@@ -18,8 +18,8 @@ const NavigationHeading = styled.div`
 `;
 
 const NavigationTitle = styled.p`
-  font-size: 3rem;
-  font-weight: 600;
+  font-size: ${(props) => props.theme.fontSize.xxl};
+  font-weight: ${(props) => props.theme.bold600};
 `;
 
 const NavigationLabel = styled.label`
@@ -36,8 +36,8 @@ const NavigationInfoIcon = styled.div`
   position: absolute;
   left: 210px;
   top: -2px;
-  font-size: 1.3rem;
-  color: #696969;
+  font-size: ${(props) => props.theme.fontSize.xs};
+  color: ${(props) => props.theme.colorSpan};
   display: inline-block;
   margin-top: -10px;
   padding-top: 10px;
@@ -47,9 +47,9 @@ const NavigationInfoIcon = styled.div`
     animation: hidden ease-in-out 0.2s 1 forwards;
     background: rgba(0, 0, 0, 0.8);
     border-radius: 5px;
-    color: #ffffff;
+    color: ${(props) => props.theme.colorWhite};
     content: attr(data-tooltip);
-    font-size: 1.2rem;
+    font-size: ${(props) => props.theme.fontSize.xxs};
     opacity: 0;
     padding: 12px;
     position: absolute;
@@ -123,7 +123,7 @@ const NavigationButton = styled(Button)`
   margin: 0 20px 7px 0;
   background-color: inherit;
   text-transform: uppercase;
-  font-size: 1.8rem;
+  font-size: ${(props) => props.theme.fontSize.l};
 `;
 
 const Navigation = ({

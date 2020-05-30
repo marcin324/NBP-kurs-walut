@@ -9,14 +9,15 @@ const Table = styled.table`
 `;
 
 const TableHeadRow = styled.tr`
-  background-color: #f3f6f9;
-  font-size: 1.8rem;
-  font-weight: 600;
+  background-color: ${(props) => props.theme.colorTableHead};
+  font-size: ${(props) => props.theme.fontSize.l};
+  font-weight: ${(props) => props.theme.bold600};
   text-align: left;
 `;
 
 const TableHeadCell = styled(TableBodyCell)`
   padding: 20px 10px;
+  border-bottom: none;
 `;
 
 const CurrencyList = ({ currencies, tableType }) => {

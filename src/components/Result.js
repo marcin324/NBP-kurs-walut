@@ -11,14 +11,14 @@ const ResultContainer = styled.div`
 `;
 
 const ResultBigInfo = styled.p`
-  font-size: 2.2rem;
-  font-weight: 600;
+  font-size: ${(props) => props.theme.fontSize.xl};
+  font-weight: ${(props) => props.theme.bold600};
   letter-spacing: 0.5px;
 `;
 
 const ResultBigInfoSpan = styled.span`
-  font-size: 1.6rem;
-  font-weight: 500;
+  font-size: ${(props) => props.theme.fontSize.m};
+  font-weight: ${(props) => props.theme.bold500};
   letter-spacing: normal;
 `;
 

@@ -15,8 +15,6 @@ html {
 }
 
 body {
-  /* color: #1F1F1F; */
-  /* background: #FFFFFF; */
   font-size: 1.6rem; /* happy rems */
   font-family: 'Montserrat', sans-serif;
 }
