@@ -1,0 +1,20 @@
+export const theme = {
+  colorWhite: "#ffffff",
+  colorButton: "#005599",
+  colorBackground: "#f1f1f1",
+  colorBorder: "#e3e3e3",
+  colorSpan: "#696969",
+  colorTableHead: "#f3f6f9",
+  colorTableHover: "#ccccff",
+  bold500: 500,
+  bold600: 600,
+  fontSize: {
+    xxs: "1.2rem",
+    xs: "1.3rem",
+    s: "1.4rem",
+    m: "1.6rem",
+    l: "1.8rem",
+    xl: "2.2rem",
+    xxl: "3rem",
+  },
+};
