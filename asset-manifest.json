@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/NBP-kurs-walut/static/js/main.d5f1846d.chunk.js",
-    "main.js.map": "/NBP-kurs-walut/static/js/main.d5f1846d.chunk.js.map",
+    "main.js": "/NBP-kurs-walut/static/js/main.5e92d401.chunk.js",
+    "main.js.map": "/NBP-kurs-walut/static/js/main.5e92d401.chunk.js.map",
     "runtime-main.js": "/NBP-kurs-walut/static/js/runtime-main.fb484ea4.js",
     "runtime-main.js.map": "/NBP-kurs-walut/static/js/runtime-main.fb484ea4.js.map",
-    "static/js/2.68026930.chunk.js": "/NBP-kurs-walut/static/js/2.68026930.chunk.js",
-    "static/js/2.68026930.chunk.js.map": "/NBP-kurs-walut/static/js/2.68026930.chunk.js.map",
+    "static/js/2.c34f47b0.chunk.js": "/NBP-kurs-walut/static/js/2.c34f47b0.chunk.js",
+    "static/js/2.c34f47b0.chunk.js.map": "/NBP-kurs-walut/static/js/2.c34f47b0.chunk.js.map",
     "index.html": "/NBP-kurs-walut/index.html",
-    "precache-manifest.158bf115736dc6aa0f3454ea63a1537a.js": "/NBP-kurs-walut/precache-manifest.158bf115736dc6aa0f3454ea63a1537a.js",
+    "precache-manifest.7de00491307923a3be88394dc7bb3e0f.js": "/NBP-kurs-walut/precache-manifest.7de00491307923a3be88394dc7bb3e0f.js",
     "service-worker.js": "/NBP-kurs-walut/service-worker.js",
-    "static/js/2.68026930.chunk.js.LICENSE.txt": "/NBP-kurs-walut/static/js/2.68026930.chunk.js.LICENSE.txt"
+    "static/js/2.c34f47b0.chunk.js.LICENSE.txt": "/NBP-kurs-walut/static/js/2.c34f47b0.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.fb484ea4.js",
-    "static/js/2.68026930.chunk.js",
-    "static/js/main.d5f1846d.chunk.js"
+    "static/js/2.c34f47b0.chunk.js",
+    "static/js/main.5e92d401.chunk.js"
   ]
 }
