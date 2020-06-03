@@ -1,5 +1,5 @@
 ## General info
-This is simple application with NBP exchange rate tables and currency calculator.
+This is simple application with NBP currency exchange rate tables and currency calculator.
 
 ## Technologies
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
