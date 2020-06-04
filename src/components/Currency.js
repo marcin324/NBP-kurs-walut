@@ -26,6 +26,7 @@ export const TableBodyCell = styled.td`
 const Image = styled.img`
   display: block;
   margin-right: 20px;
+  box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.75);
 `;
 
 const Currency = ({ currency, tableType, currencyCode }) => {
