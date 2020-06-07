@@ -1,19 +1,25 @@
 {
   "files": {
-    "main.js": "/NBP-kurs-walut/static/js/main.2278fab1.chunk.js",
-    "main.js.map": "/NBP-kurs-walut/static/js/main.2278fab1.chunk.js.map",
+    "main.js": "/NBP-kurs-walut/static/js/main.1605ce70.chunk.js",
+    "main.js.map": "/NBP-kurs-walut/static/js/main.1605ce70.chunk.js.map",
     "runtime-main.js": "/NBP-kurs-walut/static/js/runtime-main.fb484ea4.js",
     "runtime-main.js.map": "/NBP-kurs-walut/static/js/runtime-main.fb484ea4.js.map",
-    "static/js/2.c34f47b0.chunk.js": "/NBP-kurs-walut/static/js/2.c34f47b0.chunk.js",
-    "static/js/2.c34f47b0.chunk.js.map": "/NBP-kurs-walut/static/js/2.c34f47b0.chunk.js.map",
+    "static/js/2.2b623b20.chunk.js": "/NBP-kurs-walut/static/js/2.2b623b20.chunk.js",
+    "static/js/2.2b623b20.chunk.js.map": "/NBP-kurs-walut/static/js/2.2b623b20.chunk.js.map",
     "index.html": "/NBP-kurs-walut/index.html",
-    "precache-manifest.5123424728acbd64bc523e0a503e8afe.js": "/NBP-kurs-walut/precache-manifest.5123424728acbd64bc523e0a503e8afe.js",
+    "precache-manifest.44ff892d6779cac3ea7f832e2765d54f.js": "/NBP-kurs-walut/precache-manifest.44ff892d6779cac3ea7f832e2765d54f.js",
     "service-worker.js": "/NBP-kurs-walut/service-worker.js",
-    "static/js/2.c34f47b0.chunk.js.LICENSE.txt": "/NBP-kurs-walut/static/js/2.c34f47b0.chunk.js.LICENSE.txt"
+    "static/js/2.2b623b20.chunk.js.LICENSE.txt": "/NBP-kurs-walut/static/js/2.2b623b20.chunk.js.LICENSE.txt",
+    "static/media/AUD.png": "/NBP-kurs-walut/static/media/AUD.182bf2d0.png",
+    "static/media/BRL.png": "/NBP-kurs-walut/static/media/BRL.16014469.png",
+    "static/media/KRW.png": "/NBP-kurs-walut/static/media/KRW.ea358254.png",
+    "static/media/MXN.png": "/NBP-kurs-walut/static/media/MXN.cf23e699.png",
+    "static/media/NZD.png": "/NBP-kurs-walut/static/media/NZD.a151fa69.png",
+    "static/media/XDR.png": "/NBP-kurs-walut/static/media/XDR.ecef838e.png"
   },
   "entrypoints": [
     "static/js/runtime-main.fb484ea4.js",
-    "static/js/2.c34f47b0.chunk.js",
-    "static/js/main.2278fab1.chunk.js"
+    "static/js/2.2b623b20.chunk.js",
+    "static/js/main.1605ce70.chunk.js"
   ]
 }
