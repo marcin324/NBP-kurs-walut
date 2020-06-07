@@ -66,12 +66,7 @@ class App extends Component {
       const data = await this.fetchData(
         `http://api.nbp.pl/api/exchangerates/tables/${tableType}/${this.state.startDate}/${endDate}/?format=json`
       );
-      // const {rates} = data.slice(data.length - 2, data.length - 1);
-      // console.log(rates);
       const { no, effectiveDate, rates } = data.pop();
-      // console.log(data);
-      const prevRates = data.pop();
-      console.log(prevRates.rates);
       this.setState({
         currencies: rates,
         tableDate: effectiveDate,
