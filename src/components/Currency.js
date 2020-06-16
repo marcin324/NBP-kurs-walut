@@ -41,12 +41,18 @@ const Currency = ({ currency, tableType, currencyCode }) => {
       </TableBodyCell>
       <TableBodyCell>{currency.code}</TableBodyCell>
       {tableType === "a" && (
-        <TableBodyCell>{currency.mid.toFixed(4)}</TableBodyCell>
+        <TableBodyCell>
+          {currency.mid.toFixed(4).replace(".", ",")}
+        </TableBodyCell>
       )}
       {tableType === "c" && (
         <>
-          <TableBodyCell>{currency.bid.toFixed(4)}</TableBodyCell>
-          <TableBodyCell>{currency.ask.toFixed(4)}</TableBodyCell>
+          <TableBodyCell>
+            {currency.bid.toFixed(4).replace(".", ",")}
+          </TableBodyCell>
+          <TableBodyCell>
+            {currency.ask.toFixed(4).replace(".", ",")}
+          </TableBodyCell>
         </>
       )}
     </TableBodyRow>

@@ -45,14 +45,15 @@ const Result = ({
         <>
           <ResultBigInfo>
             <Flag src={require(`../images/${convertFrom}.png`)} alt="flag" />
-            {(amount * 1).toFixed(2)}{" "}
+            {(amount * 1).toFixed(2).replace(".", ",")}{" "}
             <ResultBigInfoSpan>{convertFrom}</ResultBigInfoSpan> ={" "}
-            {result.toFixed(2)}{" "}
+            {result.toFixed(2).replace(".", ",")}{" "}
             <ResultBigInfoSpan>{convertTo}</ResultBigInfoSpan>
             <Flag src={require(`../images/${convertTo}.png`)} alt="flag" />
           </ResultBigInfo>
           <ResultLittleInfoSpan>
-            1 {convertFrom} = {(1 / (amount / result)).toFixed(4)} {convertTo}{" "}
+            1 {convertFrom} ={" "}
+            {(1 / (amount / result)).toFixed(4).replace(".", ",")} {convertTo}{" "}
             według kursu średniego NBP z dnia {tableDate}
           </ResultLittleInfoSpan>
         </>

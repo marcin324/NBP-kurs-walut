@@ -34,8 +34,8 @@ const NavigationDateInfo = styled(Span)``;
 
 const NavigationInfoIcon = styled.div`
   position: absolute;
-  left: 210px;
-  top: -2px;
+  left: 205px;
+  top: -1px;
   font-size: ${(props) => props.theme.fontSize.xs};
   color: ${(props) => props.theme.colorSpan};
   display: inline-block;
