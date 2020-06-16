@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/NBP-kurs-walut/static/js/main.1605ce70.chunk.js",
-    "main.js.map": "/NBP-kurs-walut/static/js/main.1605ce70.chunk.js.map",
+    "main.js": "/NBP-kurs-walut/static/js/main.4a12670c.chunk.js",
+    "main.js.map": "/NBP-kurs-walut/static/js/main.4a12670c.chunk.js.map",
     "runtime-main.js": "/NBP-kurs-walut/static/js/runtime-main.fb484ea4.js",
     "runtime-main.js.map": "/NBP-kurs-walut/static/js/runtime-main.fb484ea4.js.map",
     "static/js/2.2b623b20.chunk.js": "/NBP-kurs-walut/static/js/2.2b623b20.chunk.js",
     "static/js/2.2b623b20.chunk.js.map": "/NBP-kurs-walut/static/js/2.2b623b20.chunk.js.map",
     "index.html": "/NBP-kurs-walut/index.html",
-    "precache-manifest.44ff892d6779cac3ea7f832e2765d54f.js": "/NBP-kurs-walut/precache-manifest.44ff892d6779cac3ea7f832e2765d54f.js",
+    "precache-manifest.13fbb08150ae393a4dd7dcc67445e583.js": "/NBP-kurs-walut/precache-manifest.13fbb08150ae393a4dd7dcc67445e583.js",
     "service-worker.js": "/NBP-kurs-walut/service-worker.js",
     "static/js/2.2b623b20.chunk.js.LICENSE.txt": "/NBP-kurs-walut/static/js/2.2b623b20.chunk.js.LICENSE.txt",
     "static/media/AUD.png": "/NBP-kurs-walut/static/media/AUD.182bf2d0.png",
@@ -20,6 +20,6 @@
   "entrypoints": [
     "static/js/runtime-main.fb484ea4.js",
     "static/js/2.2b623b20.chunk.js",
-    "static/js/main.1605ce70.chunk.js"
+    "static/js/main.4a12670c.chunk.js"
   ]
 }
