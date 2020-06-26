@@ -2,9 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { Image } from "../theme/CommonStyle";
 
-const TableBodyRow = styled.tr`
+const CurrencyItem = styled.div`
+  display: flex;
+  justify-content: space-between;
   font-weight: ${(props) => props.theme.bold500};
-  font-size: ${(props) => props.theme.fontSize.l};
+  font-size: ${(props) => props.theme.fontSize.m};
+  border-bottom: 1px solid ${(props) => props.theme.colorBorder};
   transition: all 0.2s ease-in-out;
   :nth-child(even) {
     background-color: ${(props) => props.theme.colorBackground};
@@ -14,14 +17,22 @@ const TableBodyRow = styled.tr`
   }
 `;
 
-export const TableBodyCell = styled.td`
+export const CurrencyContent = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-basis: 23%;
   padding: 5px 10px;
   min-width: 120px;
-  border-bottom: 1px solid ${(props) => props.theme.colorBorder};
+  /* border-bottom: 1px solid ${(props) => props.theme.colorBorder}; */
   :first-child {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    flex-basis: 40%;
+  }
+  :last-child {
+    padding-right: 40px;
   }
 `;
 
@@ -34,28 +45,28 @@ const Flag = styled(Image)`
 const Currency = ({ currency, tableType, currencyCode }) => {
   const flag = require(`../images/${currencyCode}.png`);
   return (
-    <TableBodyRow>
-      <TableBodyCell>
+    <CurrencyItem>
+      <CurrencyContent>
         <Flag src={flag} alt={"country flag"} />
         {currency.currency}
-      </TableBodyCell>
-      <TableBodyCell>{currency.code}</TableBodyCell>
+      </CurrencyContent>
+      <CurrencyContent>{currency.code}</CurrencyContent>
       {tableType === "a" && (
-        <TableBodyCell>
+        <CurrencyContent>
           {currency.mid.toFixed(4).replace(".", ",")}
-        </TableBodyCell>
+        </CurrencyContent>
       )}
       {tableType === "c" && (
         <>
-          <TableBodyCell>
+          <CurrencyContent>
             {currency.bid.toFixed(4).replace(".", ",")}
-          </TableBodyCell>
-          <TableBodyCell>
+          </CurrencyContent>
+          <CurrencyContent>
             {currency.ask.toFixed(4).replace(".", ",")}
-          </TableBodyCell>
+          </CurrencyContent>
         </>
       )}
-    </TableBodyRow>
+    </CurrencyItem>
   );
 };
 

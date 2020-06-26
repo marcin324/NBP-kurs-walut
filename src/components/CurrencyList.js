@@ -1,23 +1,32 @@
 import React from "react";
 import styled from "styled-components";
-import { TableBodyCell } from "./Currency";
+import { CurrencyContent } from "./Currency";
 import Currency from "./Currency";
 
-const Table = styled.table`
+const CurrencyListWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  border-spacing: 0;
+  /* border-spacing: 0; */
 `;
 
-const TableHeadRow = styled.tr`
+const CurrencyListHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
   background-color: ${(props) => props.theme.colorTableHead};
   font-size: ${(props) => props.theme.fontSize.l};
   font-weight: ${(props) => props.theme.bold600};
-  text-align: left;
+  /* text-align: left; */
 `;
 
-const TableHeadCell = styled(TableBodyCell)`
+const CurrencyListTitle = styled(CurrencyContent)`
   padding: 20px 10px;
   border-bottom: none;
+`;
+
+const CurrencyContainer = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 const CurrencyList = ({ currencies, tableType }) => {
@@ -30,28 +39,26 @@ const CurrencyList = ({ currencies, tableType }) => {
     />
   ));
   return (
-    <Table>
-      <thead>
-        <TableHeadRow>
-          {tableType === "a" && (
-            <>
-              <TableHeadCell>Nazwa waluty</TableHeadCell>
-              <TableHeadCell>Kod waluty</TableHeadCell>
-              <TableHeadCell>Kurs średni</TableHeadCell>
-            </>
-          )}
-          {tableType === "c" && (
-            <>
-              <TableHeadCell>Nazwa waluty</TableHeadCell>
-              <TableHeadCell>Kod waluty</TableHeadCell>
-              <TableHeadCell>Kupno</TableHeadCell>
-              <TableHeadCell>Sprzedaż</TableHeadCell>
-            </>
-          )}
-        </TableHeadRow>
-      </thead>
-      <tbody>{currencyList}</tbody>
-    </Table>
+    <CurrencyListWrapper>
+      <CurrencyListHeader>
+        {tableType === "a" && (
+          <>
+            <CurrencyListTitle>Nazwa waluty</CurrencyListTitle>
+            <CurrencyListTitle>Kod waluty</CurrencyListTitle>
+            <CurrencyListTitle>Kurs średni</CurrencyListTitle>
+          </>
+        )}
+        {tableType === "c" && (
+          <>
+            <CurrencyListTitle>Nazwa waluty</CurrencyListTitle>
+            <CurrencyListTitle>Kod waluty</CurrencyListTitle>
+            <CurrencyListTitle>Kupno</CurrencyListTitle>
+            <CurrencyListTitle>Sprzedaż</CurrencyListTitle>
+          </>
+        )}
+      </CurrencyListHeader>
+      <CurrencyContainer>{currencyList}</CurrencyContainer>
+    </CurrencyListWrapper>
   );
 };
 
